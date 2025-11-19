@@ -46,5 +46,3 @@ Este videojuego está siendo desarrollado como parte de un proyecto académico. 
 * **Control de versiones:** Git + GitHub
 
 ---
-
-Si deseas, puedo agregar secciones adicionales como instrucciones de instalación, cómo contribuir o una guía para desarrolladores.

@@ -27,16 +27,23 @@ public class GameManager : MonoBehaviour
         playerMovement.speed += playerMovement.speedIncreasePerPoint;
     }
 
-    // Llama este m�todo cuando el juego termina
+    // Llama este método cuando el juego termina
     public void EndGame()
     {
-        playerMovement.enabled = false; // Det�n el movimiento del jugador
+        playerMovement.enabled = false; // Detén el movimiento del jugador
+
+        // 🔇 APAGAR MÚSICA AL PERDER
+        MusicManager.instance.StopMusic();
+
         endCanvas.SetActive(true);      // Activa el Canvas final
         endScoreText.text = "PowerUps Recolectados: " + score; // Muestra el puntaje final
     }
 
     void Start()
     {
-        endCanvas.SetActive(false); // Aseg�rate de que el Canvas final est� desactivado al inicio
+        endCanvas.SetActive(false); // Asegúrate de que el Canvas final esté desactivado al inicio
+
+        // 🎵 ENCENDER MÚSICA AL EMPEZAR LA PARTIDA
+        MusicManager.instance.PlayMusic();
     }
 }

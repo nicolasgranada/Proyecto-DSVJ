@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GroundSpawner : MonoBehaviour
 {
+
     public GameObject groundTile;
     Vector3 nextSpawnPoint;
 
@@ -12,17 +13,32 @@ public class GroundSpawner : MonoBehaviour
 
         if (spawnItems)
         {
-            GroundTile tile = temp.GetComponent<GroundTile>();
-            tile.SpawnObstacle();
-            tile.SpawnCoins();
+            temp.GetComponent<GroundTile>().SpawnObstacle();
+            temp.GetComponent<GroundTile>().SpawnCoins();
         }
     }
 
+
+    // Start is called before the first frame update
     void Start()
     {
         for (int i = 0; i < 10; i++)
         {
-            SpawnTile(i >= 3);
+            if (i < 3)
+            {
+                SpawnTile(false);
+            }
+            else
+            {
+                SpawnTile(true);
+            }
+
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

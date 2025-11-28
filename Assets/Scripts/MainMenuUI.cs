@@ -2,16 +2,26 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public GameObject panelIntegrantes;
-    public GameObject panelMenu;
+    public GameObject panelIntegrantes;  // Panel con los nombres
+    public GameObject panelMenu;         // Panel con START / EXIT
 
     void Start()
     {
-        // Al entrar en Play:
-        if (panelIntegrantes != null)
-            panelIntegrantes.SetActive(false);   // Oculta nombres
+        // Al iniciar el juego mostramos el MENÚ
+        ShowMenu();
+    }
 
-        if (panelMenu != null)
-            panelMenu.SetActive(true);           // Muestra START / EXIT
+    public void ShowNames()
+    {
+        // Muestra los nombres y oculta el menú
+        if (panelIntegrantes != null) panelIntegrantes.SetActive(true);
+        if (panelMenu != null) panelMenu.SetActive(false);
+    }
+
+    public void ShowMenu()
+    {
+        // Muestra el menú y oculta los nombres
+        if (panelIntegrantes != null) panelIntegrantes.SetActive(false);
+        if (panelMenu != null) panelMenu.SetActive(true);
     }
 }

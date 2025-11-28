@@ -1,54 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public GameObject PausePanel;
 
     public void Pause()
     {
         PausePanel.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
 
-        // 🔇 PAUSAR MÚSICA
-        MusicManager.instance.PauseMusic();
+        // Pausar música mientras el juego está en pausa
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.PauseMusic();
+        }
     }
 
     public void Continue()
     {
         PausePanel.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
 
-        // 🎵 REANUDAR MÚSICA
-        MusicManager.instance.ResumeMusic();
+        // Reanudar música al continuar
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.ResumeMusic();
+        }
     }
 
     public void Quit()
     {
-        PausePanel.SetActive(false);
-        Time.timeScale = 1;
-
-        // 🎵 REANUDAR MÚSICA (si vuelves al menú)
-        MusicManager.instance.ResumeMusic();
-
+        // Volver al menú principal (escena 0)
+        Time.timeScale = 1f;
         SceneManager.LoadSceneAsync(0);
+
+        // Apagar música al salir de la partida
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.StopMusic();
+        }
     }
 
     public void Restart()
     {
-        PausePanel.SetActive(false);
-        Time.timeScale = 1;
+        // Reiniciar escena actual
+        Time.timeScale = 1f;
+        Scene current = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(current.name);
 
-        // 🎵 REANUDAR MÚSICA EN EL REINICIO
-        MusicManager.instance.ResumeMusic();
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Volver a encender música al reiniciar
+        if (MusicManager.instance != null)
+        {
+            MusicManager.instance.PlayMusic();
+        }
     }
-
-    void Start() { }
-
-    void Update() { }
 }

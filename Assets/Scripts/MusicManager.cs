@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);   // Opcional: la música sobrevive entre escenas
         }
         else
         {
@@ -19,27 +19,39 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    // 🔊 Encender música (cuando empieza el juego)
     public void PlayMusic()
     {
-        if (!musicSource.isPlaying)
+        if (musicSource != null && !musicSource.isPlaying)
+        {
             musicSource.Play();
+        }
     }
 
+    // 🔇 Apagar música del todo (menú, game over, etc.)
     public void StopMusic()
     {
-        if (musicSource.isPlaying)
+        if (musicSource != null && musicSource.isPlaying)
+        {
             musicSource.Stop();
+        }
     }
+
+    // ⏸ Pausar música (pausa del juego, help, etc.)
     public void PauseMusic()
-{
-    if (musicSource.isPlaying)
-        musicSource.Pause();
-}
+    {
+        if (musicSource != null && musicSource.isPlaying)
+        {
+            musicSource.Pause();
+        }
+    }
 
-public void ResumeMusic()
-{
-    if (!musicSource.isPlaying)
-        musicSource.UnPause();
-}
-
+    // ▶️ Reanudar música desde donde quedó pausada
+    public void ResumeMusic()
+    {
+        if (musicSource != null)
+        {
+            musicSource.UnPause();
+        }
+    }
 }

@@ -12,39 +12,43 @@ public class PauseMenu : MonoBehaviour
     {
         PausePanel.SetActive(true);
         Time.timeScale = 0;
+
+        // 🔇 PAUSAR MÚSICA
+        MusicManager.instance.PauseMusic();
     }
 
     public void Continue()
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1;
+
+        // 🎵 REANUDAR MÚSICA
+        MusicManager.instance.ResumeMusic();
     }
 
     public void Quit()
     {
-        SceneManager.LoadSceneAsync(0);
         PausePanel.SetActive(false);
         Time.timeScale = 1;
+
+        // 🎵 REANUDAR MÚSICA (si vuelves al menú)
+        MusicManager.instance.ResumeMusic();
+
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         PausePanel.SetActive(false);
         Time.timeScale = 1;
+
+        // 🎵 REANUDAR MÚSICA EN EL REINICIO
+        MusicManager.instance.ResumeMusic();
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    void Start() { }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update() { }
 }

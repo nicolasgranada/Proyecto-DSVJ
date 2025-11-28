@@ -30,4 +30,16 @@ public class MusicManager : MonoBehaviour
         if (musicSource.isPlaying)
             musicSource.Stop();
     }
+    public void PauseMusic()
+{
+    if (musicSource.isPlaying)
+        musicSource.Pause();
+}
+
+public void ResumeMusic()
+{
+    if (!musicSource.isPlaying)
+        musicSource.UnPause();
+}
+
 }

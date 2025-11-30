@@ -5,10 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
     bool alive = true;
 
-    public float speed;                  // viene desde el menú
+    public float speed = 5f;              // velocidad actual
     public Rigidbody rb;
     public float horizontalInput;
-    public float horizontalMultiplier = 2;
+    public float horizontalMultiplier = 2f;
 
     public float speedIncreasePerPoint = 0.1f;
 
@@ -17,9 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        // aplicar dificultad seleccionada
+        // 👉 aquí tomamos la velocidad según el nivel escogido en el menú
         speed = DifficultySelector.selectedSpeed;
-        speedIncreasePerPoint = DifficultySelector.speedIncreasePerPoint;
+        // el incremento por punto lo dejamos fijo, como ya lo tenías
+        // (si luego quieres que cambie por dificultad, lo ajustamos)
     }
 
     private void FixedUpdate()
@@ -34,12 +35,16 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+        {
             Jump();
+        }
 
         horizontalInput = Input.GetAxis("Horizontal");
 
         if (transform.position.y < -5)
+        {
             Die();
+        }
     }
 
     public void Die()
@@ -57,9 +62,16 @@ public class PlayerMovement : MonoBehaviour
     {
         float height = GetComponent<Collider>().bounds.size.y;
 
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, (height / 2) + 0.1f, groundMask);
+        bool isGrounded = Physics.Raycast(
+            transform.position,
+            Vector3.down,
+            (height / 2) + 0.1f,
+            groundMask
+        );
 
         if (isGrounded)
+        {
             rb.AddForce(Vector3.up * jumpForce);
+        }
     }
 }

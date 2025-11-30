@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;   // 👈 importante para cargar escenas
+using UnityEngine.SceneManagement;   // importante para cargar escenas
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -42,35 +42,28 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-    // -------------------------
-    // 👇 NUEVAS FUNCIONES
-    // -------------------------
+    // --------- BOTONES DE DIFICULTAD ---------
 
     public void PlayEasy()
-{
-    DifficultySelector.selectedSpeed = 5f;            // velocidad fácil
-    DifficultySelector.speedIncreasePerPoint = 0.10f; // acelera despacito
-    DifficultySelector.difficultyLabel = "Fácil";
+    {
+        DifficultySelector.selectedSpeed = 5f;   // velocidad fácil
+        SceneManager.LoadScene("SampleScene");   // nombre de la escena del juego
+    }
 
-    SceneManager.LoadScene("SampleScene");
-}
+    public void PlayMedium()
+    {
+        DifficultySelector.selectedSpeed = 8f;   // velocidad media
+        SceneManager.LoadScene("SampleScene");
+    }
 
-public void PlayMedium()
-{
-    DifficultySelector.selectedSpeed = 8f;            // velocidad media
-    DifficultySelector.speedIncreasePerPoint = 0.18f; // acelera más
-    DifficultySelector.difficultyLabel = "Intermedio";
+    public void PlayHard()
+    {
+        DifficultySelector.selectedSpeed = 12f;  // velocidad difícil
+        SceneManager.LoadScene("SampleScene");
+    }
 
-    SceneManager.LoadScene("SampleScene");
-}
-
-public void PlayHard()
-{
-    DifficultySelector.selectedSpeed = 12f;           // velocidad alta
-    DifficultySelector.speedIncreasePerPoint = 0.25f; // acelera duro
-    DifficultySelector.difficultyLabel = "Difícil";
-
-    SceneManager.LoadScene("SampleScene");
-}
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

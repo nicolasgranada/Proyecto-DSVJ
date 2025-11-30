@@ -1,13 +1,11 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     bool alive = true;
 
-    public float speed = 5;
+    public float speed;                  // viene desde el men√∫
     public Rigidbody rb;
     public float horizontalInput;
     public float horizontalMultiplier = 2;
@@ -17,13 +15,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce = 600f;
     [SerializeField] LayerMask groundMask;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        // aplicar dificultad seleccionada
+        speed = DifficultySelector.selectedSpeed;
+        speedIncreasePerPoint = DifficultySelector.speedIncreasePerPoint;
     }
 
-    // movimiento a la esfera
     private void FixedUpdate()
     {
         if (!alive) return;
@@ -33,30 +31,20 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
     }
 
-
-    // Update is called once per frame
     void Update()
     {
-
-        //llamar la funcion de salto
         if (Input.GetKeyDown(KeyCode.Space))
-        {
             Jump();
-        }
 
         horizontalInput = Input.GetAxis("Horizontal");
 
-        // para cuando se cae
         if (transform.position.y < -5)
-        {
             Die();
-        }
     }
 
     public void Die()
     {
         alive = false;
-        // Llama a EndGame del GameManager
         GameManager.inst.EndGame();
     }
 
@@ -69,14 +57,9 @@ public class PlayerMovement : MonoBehaviour
     {
         float height = GetComponent<Collider>().bounds.size.y;
 
-        // Verificar si est· tocando el suelo
         bool isGrounded = Physics.Raycast(transform.position, Vector3.down, (height / 2) + 0.1f, groundMask);
 
         if (isGrounded)
-        {
-            // Si est· tocando el suelo, permite el salto
             rb.AddForce(Vector3.up * jumpForce);
-        }
     }
-
 }

@@ -21,6 +21,22 @@ public class PlayerMovement : MonoBehaviour
         speed = DifficultySelector.selectedSpeed;
         // el incremento por punto lo dejamos fijo, como ya lo tenías
         // (si luego quieres que cambie por dificultad, lo ajustamos)
+
+        // 👉 Aplicar el color de la bola seleccionada
+        ApplyBallColor();
+    }
+
+    void ApplyBallColor()
+    {
+        // Obtener el MeshRenderer del jugador
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        
+        if (renderer != null)
+        {
+            // Aplicar el color seleccionado al material
+            Material playerMaterial = renderer.material;
+            playerMaterial.color = BallSelector.selectedBallColor;
+        }
     }
 
     private void FixedUpdate()

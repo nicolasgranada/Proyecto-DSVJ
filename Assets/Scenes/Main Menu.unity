@@ -193,8 +193,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Proyecto Final Desarrollo de Videojuegos\nVictor Daniel Acu\xF1a Salazar
-    - 2310114\nNicolas Granada Fernandez - 2310107\nJuan Pablo Robayo Maestre - 2156743\nUniversidad
-    del Valle\n"
+    - 2310114\nNicolas Granada Fernandez - 2310107\nJuan Pablo Robayo Maestre - 2156743\n"
 --- !u!222 &24348658
 CanvasRenderer:
   m_ObjectHideFlags: 0

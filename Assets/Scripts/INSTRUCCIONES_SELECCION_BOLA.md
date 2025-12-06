@@ -84,3 +84,4 @@ Puedes crear un panel separado (similar al panel de niveles) que se muestre cuan
 
 Si quieres agregar más colores o cambiar los existentes, edita los métodos en `MainMenuUI.cs` y ajusta los valores RGB en `new Color(r, g, b, a)`.
 
+

@@ -11,13 +11,19 @@ public class MainMenu : MonoBehaviour
 
     public void PlayMedium()
     {
-        DifficultySelector.selectedSpeed = 8f;
+        DifficultySelector.selectedSpeed = 7f;
         SceneManager.LoadSceneAsync("SampleScene");
     }
 
     public void PlayHard()
     {
-        DifficultySelector.selectedSpeed = 12f;
+        DifficultySelector.selectedSpeed = 10f;
+        SceneManager.LoadSceneAsync("SampleScene");
+    }
+
+    public void PlayExtreme()
+    {
+        DifficultySelector.selectedSpeed = 16f;
         SceneManager.LoadSceneAsync("SampleScene");
     }
 

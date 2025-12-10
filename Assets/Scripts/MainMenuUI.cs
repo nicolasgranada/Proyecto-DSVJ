@@ -135,9 +135,9 @@ public class MainMenuUI : MonoBehaviour
     // ====================================================================
     // DIFICULTADES
     // ====================================================================
-    public void PlayEasy()   { DifficultySelector.selectedSpeed = 5f; ShowBallSelection(); }
-    public void PlayMedium() { DifficultySelector.selectedSpeed = 7f; ShowBallSelection(); }
-    public void PlayHard()   { DifficultySelector.selectedSpeed = 10f; ShowBallSelection(); }
+    public void PlayEasy()   { DifficultySelector.selectedSpeed = 8f; ShowBallSelection(); }
+    public void PlayMedium() { DifficultySelector.selectedSpeed = 12f; ShowBallSelection(); }
+    public void PlayHard()   { DifficultySelector.selectedSpeed = 20f; ShowBallSelection(); }
     public void PlayExtreme()   { DifficultySelector.selectedSpeed = 16f; ShowBallSelection(); }
 
 
